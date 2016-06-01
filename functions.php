@@ -498,6 +498,42 @@ function woo_my_new_function( $id, $product = null)
 */
 
 
+//SELECTIVE COUPON APPLICATION AT CART
+//Bridesmaids Product Category Coupon ( 6/1/16 - 6/30/16 )
+add_action( 'woocommerce_before_cart', 'apply_matched_coupons' );
+
+function apply_matched_coupons() {
+	global $woocommerce;
+
+	$coupon_code = 'bridesmaid10percent'; // your coupon code here
+
+  // loop through the cart looking for the free shpping products
+  $bridesmaid_dress_present = false;
+
+  foreach ( $woocommerce->cart->get_cart() as $cart_item_key => $values ) {
+    $_product = $values['data'];
+    $terms = get_the_terms( $_product->id, 'product_cat' );
+
+    // second level loop search, in case some items have several categories
+    foreach ($terms as $term) {
+      $_categoryid = $term->term_id;
+      if( $_categoryid == 76 ) {
+        $bridesmaid_dress_present = true;
+        if ( !$woocommerce->cart->has_discount( $coupon_code ) ) {
+          $woocommerce->cart->add_discount( $coupon_code );
+        }
+      }
+    }
+  }
+
+  if ( $woocommerce->cart->has_discount( $coupon_code ) && !$bridesmaid_dress_present ) {
+    $woocommerce->cart->remove_coupon( $coupon_code );
+  }
+}
+
+
+
+
 function woo_header($id)
 {
 	$heading = get_field('add_page_title', $id);
