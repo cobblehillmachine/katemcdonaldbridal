@@ -498,6 +498,37 @@ function woo_my_new_function( $id, $product = null)
 */
 
 
+//SHOW DISCOUNT ON SELECT SINGLE PRODUCT PAGES
+add_filter('woocommerce_variable_price_html','show_discount_price', 10, 2);
+function show_discount_price( $price, $product ) {
+
+  $product_cat = 76;
+  $is_our_product = false;
+  $discount_percent = 10;
+
+  $terms = get_the_terms( $product->id, 'product_cat' );
+  foreach ($terms as $term) {
+    $product_cat_id = $term->term_id;
+    if ( $product_cat_id == $product_cat ) {
+      $is_our_product = true;
+      break;
+    }
+  }
+
+  if ( !$is_our_product ) {
+    return $price;
+  }
+
+  preg_match("/<span.*36;(.*)<\//", $price, $matches);
+  $num_price = floatval($matches[1]);
+  $sale_price = round( $num_price - ( $num_price / $discount_percent ), 2 );
+  $sale_price = money_format('%.2n', $sale_price);
+
+  return '<span style="text-decoration: line-through">' . $price . '</span>' . '<br>' . sprintf( __('%s', 'woocommerce' ), '$' . $sale_price );
+}
+
+
+
 //SELECTIVE COUPON APPLICATION AT CART
 //Bridesmaids Product Category Coupon ( 6/1/16 - 6/30/16 )
 add_action( 'woocommerce_before_cart', 'apply_matched_coupons' );
