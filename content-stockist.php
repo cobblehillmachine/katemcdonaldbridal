@@ -1,5 +1,5 @@
 <?php $subtitle = get_field('subtitle'); ?>
-<div class="stockist">
+<div class="stockist <?php if ( in_category('bridesmaid-stockist') ) { ?>171<?php } ?> <?php if ( in_category('bridal-stockist') ) { ?>170<?php } ?>">
 	<?php if ($counter > 1 ) { ?>
 		<hr>
 	<?php } ?>

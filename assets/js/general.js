@@ -42,6 +42,8 @@
 //   	quantity();
   	productSlider();
   	legendHover();
+  	columnizeStockists();
+  	stockistDropdown()
   	$('#home-overlay .close').click(function(){
 		$('#home-overlay').fadeOut();
 		$('body').css({'overflow-y':'auto'});
@@ -324,6 +326,43 @@ function legendHover() {
 	$('.pricing-legend-wrapper span').on('mouseleave', function() {
 		$(this).parent().find($('.pricing-legend')).css('opacity', 0);
 	})
+}
+
+function stockistDropdown() {
+	$('.stockist').hide();
+	$('.stockist-list h3').hide();
+	$('.stockist.170').show();
+	$('.stockist.170').parent().find($('h3')).show();
+	var dropdown = $('#cat');
+	dropdown.on('change', function() {
+		var value = $(this).val();
+		if ( value > 0 ) {
+			$('.stockist').hide();
+			$('.stockist-list h3').hide();
+			$('.stockist.' + value).show();
+			$('.stockist.' + value).parent().find($('h3')).show();
+		} else {
+			$('.stockist, .stockist-list h3').show();
+		}
+
+		
+	})
+
+
+}
+
+function columnizeStockists() {
+	var columns;
+  	if ($(window).width() > 1030) {
+	  	columns = 3;
+  	} else if ($(window).width() > 600) {
+	  	columns = 2;
+  	} else {
+	  	columns = 1;
+  	}
+  	$('.stockist-list').columnize ({
+	  	columns: columns
+  	})
 }
 
 })(jQuery, window)

@@ -33,7 +33,7 @@ get_header(); the_post(); ?>
             <?php get_contact_info( $post->ID ) ?>
 
             <ul class="contact-social">
-              <li><a href="https://www.facebook.com/LulaKate" class="facebook"><i class="fa fa-facebook"></i></a></li>
+              <li><a href="https://www.facebook.com/bridekatemcdonald" class="facebook"><i class="fa fa-facebook"></i></a></li>
               <li><a href="https://twitter.com/katembride" class="twitter"><i class="fa fa-twitter"></i></a></li>
               <li><a href="https://www.pinterest.com/KateMbridal/" class="pinterest"><i class="fa fa-pinterest"></i></a></li>
               <li><a href="http://instagram.com/katemcdonaldbridal" class="instagram"><i class="fa fa-instagram"></i></a></li>

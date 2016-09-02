@@ -148,9 +148,17 @@ function get_home_page_images( $id )
       foreach( $images as $img )
       {
 
-        $html .= '<li>
-			        			<img src="'.$img['slide']['url'].'" />
-			        		</li>';
+        $html .= '<li>';
+        if ($img['optional_link']) {
+	      $html .= '<a target=_blank href='.$img['optional_link'].'>';
+        }
+        			
+        $html .= '<img src="'.$img['slide']['url'].'" />';
+        
+        if ($img['optional_link']) {
+	      $html .= '</a>';
+        }
+        $html .= '</li>';
       }
 
       $html .= '</ul>';
@@ -499,7 +507,7 @@ function woo_my_new_function( $id, $product = null)
 
 
 //SHOW DISCOUNT ON SELECT SINGLE PRODUCT PAGES
-add_filter('woocommerce_variable_price_html','show_discount_price', 10, 2);
+// add_filter('woocommerce_variable_price_html','show_discount_price', 10, 2);
 function show_discount_price( $price, $product ) {
 
   $product_cat = 76;
@@ -621,6 +629,7 @@ function add_javascript()
 		wp_enqueue_script( 'retina' , get_template_directory_uri().'/assets/js/retina.js' );
 		wp_enqueue_script( 'flexslider' , get_template_directory_uri().'/assets/js/jquery.flexslider-min.js' );
 		wp_enqueue_script( 'elevateZoom' , get_template_directory_uri().'/assets/js/jquery.elevatezoom.js' );
+		wp_enqueue_script( 'columnizer' , get_template_directory_uri().'/assets/js/jquery.columnizer.js' );
 
 	}
 }

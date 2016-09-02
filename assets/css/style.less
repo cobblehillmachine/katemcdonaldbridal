@@ -946,6 +946,7 @@ i {
 	a {
 		color: #575757;
 	}
+	select {.browser-appearance(none);   background-color: transparent;  background-image: url(../media/plus-transparent.png); background-repeat: no-repeat;      background-position: 95%; background-size: 6px;border: 2px solid black; height: 35px; padding:8px; border-radius: 0; font:@pagefont; display: block; width: 190px; margin: 10px auto;}
 }
 .stockists.cont h3 {
 	font-family: @pagefont;
@@ -1196,6 +1197,9 @@ dl.product-addon-totals dt {	float: none; width: auto;}
 	@media @tablet {	display: block;}
 }
 
+span.onsale {	display: none;}
+del {	text-decoration: line-through}
+
 .primary.cart, .primary.Checkout { width: 90%; margin: 0 auto;
 	button, input[type="submit"] {	min-width: 125px; background: white;font-family: @pagefont; text-transform: uppercase; font-size:12px;letter-spacing: 1px; padding: 12px; cursor: pointer; -webkit-appearance: none; -moz-appearance: none; appearance: none;border: 1px solid black; border-radius: 0;
 		&:hover {	color: white; border-color: #d9ae64; background: #d9ae64}
@@ -1351,7 +1355,7 @@ dl.product-addon-totals dt {	float: none; width: auto;}
 .payment_method_stripe {	
 	#payment_method_stripe, img {display: none;}
 	label {	  font-family: "effra", sans-serif;text-transform: uppercase;font-size: 12px;letter-spacing: 1px;}
-	#stripe-cc-form {
+	#wc-stripe-cc-form {
 		p.form-row {	display: inline-block; width: 30%; padding: 0 2%;
 			& input {	width: 150px;}
 			&:first-of-type {	width: 35%; padding-left: 0;
@@ -1937,6 +1941,7 @@ table thead {
 		.column {
 			width: 100%;
 		}
+		
 	}
 
 	.blog-container .content {
