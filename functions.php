@@ -498,16 +498,12 @@ function wc_remove_related_products( $args ) {
 add_filter('woocommerce_related_products_args','wc_remove_related_products', 10);
 /* add_action('woocommerce_before_main_content', 'woo_header', 15); */
 
-/*
-function woo_my_new_function( $id, $product = null)
-{
 
-}
-*/
-
+// COMMENTED OUT BY MARY - 9/8/16 - NO LONGER RELEVANT
 
 //SHOW DISCOUNT ON SELECT SINGLE PRODUCT PAGES
 // add_filter('woocommerce_variable_price_html','show_discount_price', 10, 2);
+/*
 function show_discount_price( $price, $product ) {
 
   $product_cat = 76;
@@ -534,11 +530,13 @@ function show_discount_price( $price, $product ) {
 
   return '<span style="text-decoration: line-through">' . $price . '</span>' . '<br>' . sprintf( __('%s', 'woocommerce' ), '$' . $sale_price );
 }
+*/
 
 
 
 //SELECTIVE COUPON APPLICATION AT CART
 //Bridesmaids Product Category Coupon ( 6/1/16 - 6/30/16 )
+/*
 add_action( 'woocommerce_before_cart', 'apply_matched_coupons' );
 
 function apply_matched_coupons() {
@@ -569,6 +567,7 @@ function apply_matched_coupons() {
     $woocommerce->cart->remove_coupon( $coupon_code );
   }
 }
+*/
 
 
 
