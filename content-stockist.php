@@ -10,7 +10,7 @@
 	<p><?php the_field('street_address'); ?></p>
 	<p><?php the_field('city_state_zip'); ?></p>
 	<p><?php the_field('phone_number'); ?></p>
-	<p><a class="contact-email" href="mailto:"<?php the_field('email_address'); ?>""><?php the_field('email_address'); ?></a></p>
+	<p><a class="contact-email" target="_blank" href="http://<?php the_field('email_address'); ?>"><?php the_field('email_address'); ?></a></p>
 	<?php if ( get_post_meta($post->ID, 'appointment_required?', yes) ) { ?>
 		<p class="kepler-italic">by appointment only</p>
 	<?php } ?>
